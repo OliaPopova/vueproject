@@ -1,7 +1,5 @@
 {
-  "scripts": {
-    "start": "node-sass sass/main.scss  css/style.css -w"
-  },
+
 
   "name": "vueproject",
   "version": "1.0.0",
