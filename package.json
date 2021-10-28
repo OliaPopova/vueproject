@@ -1,5 +1,5 @@
 {
-  "scripts": {"start":"node gist.js"},
+  "scripts": {"start":"node http_unpkg.com_vue.js"},
   "name": "vueproject",
   "version": "1.0.0",
   "dependencies": {
