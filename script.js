@@ -1,7 +1,7 @@
 var myCanvas = document.getElementById("myCanvas");
 if (myCanvas){
-    myCanvas.width = 300;
-    myCanvas.height = 300;
+    myCanvas.width = 400;
+    myCanvas.height = 400;
 }
 var ctx = myCanvas.getContext("2d");
 
@@ -84,21 +84,42 @@ var Barchart = function(options){
 
             barIndex++;
         }
+//drawing series name
+        this.ctx.save();
+        this.ctx.textBaseline="bottom";
+        this.ctx.textAlign="center";
+        this.ctx.fillStyle = "#000000";
+        this.ctx.font = "bold 14px Arial";
+        this.ctx.fillText(this.options.seriesName, this.canvas.width/2,this.canvas.height);
+        this.ctx.restore();
 
+        //draw legend
+        barIndex = 0;
+        var legend = document.querySelector("legend[for='myCanvas']");
+        var ul = document.createElement("ul");
+        legend.append(ul);
+        for (categ in this.options.data){
+            var li = document.createElement("li");
+            li.style.listStyle = "none";
+            li.style.borderLeft = "20px solid "+this.colors[barIndex%this.colors.length];
+            li.style.padding = "5px";
+            li.textContent = categ;
+            ul.append(li);
+            barIndex++;
+        }
     }
 }
 
 var myBarchart = new Barchart(
     {
         canvas:myCanvas,
-        padding:10,
+        seriesName:"Vinyl records",
+        padding:20,
         gridScale:5,
         gridColor:"#eeeeee",
         data:myVinyls,
         colors:["#a55ca5","#67b6c7", "#bccd7a","#eb9743"]
     }
 );
-
 console.log(myCanvas);
-
 myBarchart.draw();
