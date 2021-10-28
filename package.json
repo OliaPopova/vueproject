@@ -1,5 +1,7 @@
 {
-
+  "scripts": {
+    "start": "node index.js"
+  },
   "name": "vueproject",
   "version": "1.0.0",
   "dependencies": {
