@@ -5,9 +5,10 @@
     <link rel="stylesheet" href="css/style.css">
     <title>MyProjectVueJS</title>
     <script src="https://unpkg.com/vue"></script>
-
+    <script src="https://www.google.com/jsapi"></script>
 </head>
 <body>
+    <!-- <canvas id="myCanvas"></canvas> -->
 <div class="card">
     <img class="card-photo" src="rosnano1.jpg" alt ="Картинка не загружена">
     <h1>Роснано</h1>
@@ -26,7 +27,7 @@
 </div>
 
 <script>
-
+    // Vue.loadScript('./gist.js');
     Vue.component("tab-деятельность", {
         template: "<div>Содействие реализации государственной политики в сфере создания и " +
             "развития наноиндустрии и соответвующей инновационной инфроструктуры" +
@@ -72,23 +73,32 @@
     });
 
     Vue.component("tab-финансирование", {
-        template: "<div>Шаблон </div>"
+        template: "<div id=\"oil\" style=\"width: 500px; height: 400px;\"></div>",
+        mounted() {
+            let recaptchaScript = document.createElement('script')
+            recaptchaScript.setAttribute('src', 'gist.js')
+            document.head.appendChild(recaptchaScript)
+            },
     });
-
+    // Vue.loadScript('gist.js');
     new Vue({
         el: "#dynamic-component-demo",
         data: {
             currentTab: "Деятельность",
             tabs: ["Деятельность", "Инструменты поддержки", "Результаты", "Эффективность", "Проекты", "Получатели поддержки","Финансирование"]
         },
-
+        // mounted() {
+        //     let recaptchaScript = document.createElement('script')
+        //     recaptchaScript.setAttribute('src', 'script.js')
+        //     document.head.appendChild(recaptchaScript)
+        //     },
         computed: {
             currentTabComponent: function() {
                 return "tab-" + this.currentTab.toLowerCase();
             }
         }
     });
-    //
+    // Vue.loadScript('gist.js');
 
 </script>
 </body>
